@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import TableData from './TableData';
+import Action from './Action';
+
 
 class Table extends Component {
     deleteButtonClick=(idUser)=>{
         this.props.deleteUser(idUser)
     };
+    changeBulk=()=>{
+        if(this.props.Bulk===true){
+            return <Action/>;
+        }
+    }
+           
+
     mappingData=()=>(
         this.props.DataUserProps.map((value,key)=>(
-            <TableData editFunClick={(user)=>this.props.editFun(value)} Name={value.Name} Description={value.Description} Due={value.Due} Priority={value.Priority} id={key} changeEditUserStatus={()=>this.props.changeEditUserStatus()}
-            deleteButtonClick={(idUser)=>this.props.deleteButtonClick(idUser)} />
+            <TableData
+            Name={value.Name} Description={value.Description} Due={value.Due} Priority={value.Priority} id={value.id}
+            editFunClick={(user)=>this.props.editFun(value)} 
+            changeEditUserStatus={()=>this.props.changeEditUserStatus()}
+            deleteButtonClick={(idUser)=>this.props.deleteButtonClick(idUser)}
+            Bulk={this.props.Bulk} 
+            changeBulkAction={()=>this.props.changeBulkAction()}/>
         ))
-    
-    
-    )
-        
+    )        
     render() {
         return (
             <div className="col-12">
@@ -21,6 +32,7 @@ class Table extends Component {
             </div><table className="table ">
                     {this.mappingData()}
                 </table>
+            {this.changeBulk()}
           </div>          
         );
     }

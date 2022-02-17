@@ -7,8 +7,7 @@ class Head extends Component {
             <div className="container text-center">
               <h1><b>New Task</b></h1>
             </div>
-           </div>
-          
+           </div>         
         );
     }
 }

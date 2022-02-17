@@ -8,19 +8,19 @@ class Search extends Component {
             TempValue:""
         };
     }
-    isShowEditForm=()=>{
-        if(this.props.editUserStatus===true){
-            return <EditUser changeEditUserStatus={()=>this.props.changeEditUserStatus()} userEditObject={this.props.userEditObject}/>
-        }
-    }
     isChange=(event)=>{
         this.setState({
             TempValue:event.target.value
         });
         this.props.getText(this.state.TempValue);
+    }  
+    isShowEditForm=()=>{
+        if(this.props.editUserStatus===true){
+            return <EditUser 
+            changeEditUserStatus={()=>this.props.changeEditUserStatus()} 
+            userEditObject={this.props.userEditObject}/>
+        }
     }
-    
-    
     render() {
         return (
             <>
@@ -32,5 +32,4 @@ class Search extends Component {
         );
     }
 }
-
 export default Search;

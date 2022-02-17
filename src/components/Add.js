@@ -10,35 +10,31 @@ class Add extends Component {
         Priority:""
         }
     }
-    
     isChange=(event)=>{
         const Name=event.target.name;
         const value=event.target.value;
         this.setState({
           [Name]:value
-        });
-     
+        });     
     }
-   
-    render() {
+     render() {
         return (
-          <form>
+        <form>
           <div className="col-9">
           <input type="text" className="form-control" name='Name'  onChange={(event)=>this.isChange(event)} id aria-describedby="helpId" placeholder="Add new task..." />
-
           </div>
           <div className="col-9">
-            <label htmlFor="floatingTextarea" name='Description'  onChange={(event)=>this.isChange(event)}><b>Description</b></label>
-            <textarea className="form-control" placeholder id="floatingTextarea" defaultValue={""} />
+            <label htmlFor="floatingTextarea" ><b>Description</b></label>
+            <textarea name='Description'  onChange={(event)=>this.isChange(event)} className="form-control" placeholder id="floatingTextarea" defaultValue={""} />
           </div>
           <div className="btn-group">
             <div className="col-9">
-            <label htmlFor="myDate1" name='Due'  onChange={(event)=>this.isChange(event)}><b>Due Date</b></label>
-              <input type="date" id="myDate1" default className="form-control" />
+            <label htmlFor="myDate1"  ><b>Due Date</b></label>
+              <input type="date" name='Due'  onChange={(event)=>this.isChange(event)} id="myDate1" default className="form-control" />
             </div>
             <div className="col-9">
-            <label htmlFor="myState" name='Priority'  onChange={(event)=>this.isChange(event)}><b>Priority</b></label>
-              <select id="myState" className="form-control">
+            <label htmlFor="myState" ><b>Priority</b></label>
+              <select name='Priority'  onChange={(event)=>this.isChange(event)} id="myState" className="form-control">
                 <option selected>Normal</option>
                 <option>Low</option>
                 <option>High</option>

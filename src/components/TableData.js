@@ -13,7 +13,7 @@ class TableData extends Component {
             <>
             <tbody><tr>
                   <td>
-                    <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" />
+                    <input className="form-check-input" onClick={()=>this.props.changeBulkAction()} type="checkbox" defaultValue id="flexCheckDefault" />
                   </td>
                   <td align="center">
                    {this.props.Name}
@@ -24,8 +24,7 @@ class TableData extends Component {
                   </td>
                   </tr>
               </tbody>
-            </>
-          
+            </>        
         );
     }
 }
