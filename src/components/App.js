@@ -52,30 +52,44 @@ class App extends Component {
     });
     //console.log(user)
   }
+  getUserEditInfoApp=(info)=>{
+    this.state.data.forEach((value,key)=>{
+      if(value.id===info.id){
+        value.Name=info.Name;
+        value.Description=info.Description;
+        value.Due=info.Due;
+        value.Priority=info.Priority;
+
+      }
+    }
+    )
+  }
   changeBulkAction=()=>{
     this.setState({
       Bulk: !this.state.Bulk
     });
   }
-
-  //  var NewData=this.state.data.filter(new => new.id !== idUser);
-  //   this.setState({
-  //     data:NewData
-  //    });
+  deleteUser=(idUser)=>{
+     var NewData=this.state.data.filter(NewItem => NewItem.id !== idUser);
+      this.setState({
+        data:NewData
+       });
+   }
+    
   // console.log(temData);
-  // deleteUser=(idUser)=>{
+  
   //   //console.log(idUser);
-  //   var temData=this.state.data;
-  //    temData.forEach((value,key)=>{
-  //      if({key}===idUser){
-  //        //console.log(value.Name);
-  //        temData.delete()
-  //      }
-  //      this.setState({
-  //        data:temData
-  //      });
-  //    })
-  //    }
+    //  var temData=this.state.data;
+    //   temData.forEach((value,key)=>{
+    //     if(value.id===idUser){
+    //       //console.log(value.Name);
+    //      temData.delete();
+    //     };
+      //   this.setState({
+      //     data:temData
+      // });
+      // })
+     // }
 
   render() {  
     var ketqua=[];
@@ -102,7 +116,8 @@ class App extends Component {
           getText={(dl)=>this.getTextSearch(dl)}    
           editUserStatus={this.state.editUserStatus} 
           changeEditUserStatus={()=>this.changeEditUserStatus()}
-          userEditObject={this.state.userEditObject}  />
+          userEditObject={this.state.userEditObject} 
+          getUserEditInfoApp={(info)=>this.getUserEditInfo(info)} />
           <Table 
           DataUserProps={ketqua} 
           editFun={(user)=>this.editUser(user)}         

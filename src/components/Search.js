@@ -5,7 +5,8 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state={
-            TempValue:""
+            TempValue:"",
+            UserObj:""
         };
     }
     isChange=(event)=>{
@@ -14,13 +15,21 @@ class Search extends Component {
         });
         this.props.getText(this.state.TempValue);
     }  
+    getUserEditInfo=(info)=>{
+        this.setState({
+            UserObj:info
+        })
+        this.props.getUserEditInfoApp(info);
+    }
     isShowEditForm=()=>{
         if(this.props.editUserStatus===true){
             return <EditUser 
             changeEditUserStatus={()=>this.props.changeEditUserStatus()} 
-            userEditObject={this.props.userEditObject}/>
+            userEditObject={this.props.userEditObject}
+            getUserEditInfo={(info)=>this.getUserEditInfo(info)} />
         }
     }
+    
     render() {
         return (
             <>
