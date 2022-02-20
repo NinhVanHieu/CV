@@ -12,15 +12,17 @@ class TableData extends Component {
         return (
             <>
             <tbody><tr>
-                  <td>
-                    <input className="form-check-input" onClick={()=>this.props.changeBulkAction()} type="checkbox" defaultValue id="flexCheckDefault" />
+                  <td width='10%'>
+                    <input onClick={()=>this.props.changeBulkAction()} type="checkbox" id="flexCheckDefault" />
                   </td>
-                  <td align="center">
+                  <td align="center" width='70%'>
                    {this.props.Name}
                   </td>
-                  <td align="right">
-                    <button type="button" className="btn btn-info" onClick={()=>this.editClick()} >Detail</button>
-                    <button type="button" className="btn btn-danger" onClick={(idUser)=>this.deleteButtonClick(this.props.id)} >Remove</button>
+                  <td align="right" width='10%'>
+                    <button type="button" className="btn btn-info" onClick={()=>this.editClick()} >Detail</button>  
+                  </td>
+                  <td align="right" width='10%'>
+                  <button type="button" className="btn btn-danger" onClick={(idUser)=>this.deleteButtonClick(this.props.id)} >Remove</button>
                   </td>
                   </tr>
               </tbody>

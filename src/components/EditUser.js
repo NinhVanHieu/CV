@@ -9,11 +9,9 @@ class EditUser extends Component {
         Description:this.props.userEditObject.Description,
         Due:this.props.userEditObject.Due,
         Priority:this.props.userEditObject.Priority
-
       }
   }
-  
-  isChange=(event)=>{
+    isChange=(event)=>{
     const Name=event.target.name;
     const value=event.target.value;
     this.setState({
@@ -32,30 +30,36 @@ class EditUser extends Component {
   }
     render() {
         return (
-            <form>
+          <form>
+            <br/>
           <div className="col-12">
-          <input onChange={(event=>this.isChange(event))} defaultValue={this.props.userEditObject.Name} type="text" className="form-control" Name='Name'   id aria-describedby="helpId" placeholder="Add new task..." />
+            <input onChange={(event)=>this.isChange(event)} defaultValue={this.props.userEditObject.Name} type="text" className="form-control" name='Name' placeholder="Add new task..." />
           </div>
           <div className="col-12">
-            <label  htmlFor="floatingTextarea" Name='Description' ><b>Description</b></label>
-            <textarea  onChange={(event=>this.isChange(event))} defaultValue={this.props.userEditObject.Description} className="form-control" placeholder id="floatingTextarea" />
+            <br/>
+            <label  htmlFor="floatingTextarea" ><b>Description</b></label>
+            <textarea name='Description'  onChange={(event)=>this.isChange(event)} defaultValue={this.props.userEditObject.Description} className="form-control" rows='5' id="floatingTextarea" />
           </div>
-          <div className="btn-group">
-            <div className="col-12">
-            <label htmlFor="myDate1" Name='Due'  ><b>Due Date</b></label>
-              <input  onChange={(event=>this.isChange(event))} defaultValue= {this.props.userEditObject.Due} type="date" id="myDate1" default className="form-control" />
-            </div>
-            <div className="col-12">
-            <label htmlFor="myState" Name='Priority' ><b>Priority</b></label>
-              <select  onChange={(event=>this.isChange(event))} defaultValue= {this.props.userEditObject.Priority}  id="myState" className="form-control">
+          
+          <div className="col-12 btn-group ">
+          <div className="col-6">
+            <br/>
+            <label htmlFor="myDate1"><b>Due Date</b></label>
+            <input name='Due' onChange={(event)=>this.isChange(event)} defaultValue= {this.props.userEditObject.Due} type="date" id="myDate1" default className="form-control" />
+          </div>
+          <div className="col-6">
+            <br/>
+            <label htmlFor="myState"><b>Priority</b></label>
+              <select name='Priority' onChange={(event)=>this.isChange(event)} defaultValue= {this.props.userEditObject.Priority}  id="myState" className="form-control">
                 <option selected>Normal</option>
                 <option>Low</option>
                 <option>High</option>
               </select>
-            </div>
           </div>
+          </div>
+          
           <div className="col-12">
-            <hr />
+            <br />
             <input type='reset' className="btn btn-block btn-success" onClick={()=>this.saveButton()} value='Update' ></input> 
           </div>
         </form>

@@ -20,20 +20,22 @@ class Table extends Component {
             Name={value.Name} Description={value.Description} Due={value.Due} Priority={value.Priority} id={value.id}
             editFunClick={(user)=>this.props.editFun(value)} 
             changeEditUserStatus={()=>this.props.changeEditUserStatus()}
-            deleteButtonClick={(idUser)=>this.props.deleteButtonClick(idUser)}
+            deleteButtonClick={(idUser)=>this.deleteButtonClick(idUser)}
             Bulk={this.props.Bulk} 
             changeBulkAction={()=>this.props.changeBulkAction()}/>
         ))
     )        
     render() {
         return (
+            
             <div className="col-12">
-            <div className="btn-group">
-            </div><table className="table ">
+                <br/>
+            <table className="table"  border="1px" rules="rows">
                     {this.mappingData()}
-                </table>
+            </table>
+            <br/>
             {this.changeBulk()}
-          </div>          
+            </div>      
         );
     }
 }

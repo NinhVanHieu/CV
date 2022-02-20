@@ -5,7 +5,8 @@ class TodoList extends Component {
         return (
             <div className="col-12">
             <div className="container text-center">
-                <h1><b>To Do List</b></h1>
+                <br/>
+                <h3><b>To Do List</b></h3>
             </div>
             </div>
         );
