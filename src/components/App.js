@@ -6,9 +6,9 @@ import Head from './Head';
 import Search from './Search';
 import Table from './Table';
 import DataUser from './Data.json';
-import TodoList from '../TodoList';
+import TodoList from './TodoList';
 
-const { v4: uuidv4 } = require('uuid');
+import { v1 as uuidv1 } from 'uuid';
 
 class App extends Component {
   constructor(props) {
@@ -21,9 +21,21 @@ class App extends Component {
       Bulk:false
     };
   }
+  
+   componentWillMount() {
+     // if(localStorage.getItem('userData')===null){
+       localStorage.setItem('userData',JSON.stringify(DataUser));
+    //};
+    // esle{
+    //   var temp=JSON.parse(localStorage.getItem('userData'));
+    //    this.setState({
+    //      data:temp
+    //    });
+    //  }
+   };
   getNewUserData=(Name,Description,Due,Priority)=>{
     var item={};
-    item.id=uuidv4(); 
+    item.id=uuidv1(); 
     item.Name=Name;
     item.Description=Description;
     item.Due=Due;
@@ -33,6 +45,7 @@ class App extends Component {
     this.setState({
       data:items
     });
+    localStorage.setItem('userData',JSON.stringify(items));
   }
   getTextSearch=(dl)=>{
     this.setState({
@@ -59,10 +72,9 @@ class App extends Component {
         value.Description=info.Description;
         value.Due=info.Due;
         value.Priority=info.Priority;
-
       }
-    }
-    )
+    })
+    localStorage.setItem('userData',JSON.stringify(this.state.data));
   }
   changeBulkAction=()=>{
     this.setState({
@@ -74,22 +86,9 @@ class App extends Component {
       this.setState({
         data:NewData
        });
+
+     localStorage.setItem('userData',JSON.stringify(NewData));
    }
-    
-  // console.log(temData);
-  
-  //   //console.log(idUser);
-    //  var temData=this.state.data;
-    //   temData.forEach((value,key)=>{
-    //     if(value.id===idUser){
-    //       //console.log(value.Name);
-    //      temData.delete();
-    //     };
-      //   this.setState({
-      //     data:temData
-      // });
-      // })
-     // }
 
   render() {  
     var ketqua=[];
@@ -103,21 +102,22 @@ class App extends Component {
     })  
     return (
       <>
-      <table border="1px" width="100%">
-  <tbody><tr>
-      <td>
-      <Head/>
+      <table border="1px" width='90%' align='center' rules='cols'>
+      <thead>
+      <tr><th><Head/></th>
+        <th><TodoList/></th></tr></thead> 
+      <tbody>
+      <tr><td width='30%' valign="top">
       <Add 
       NewAdd={(Name,Description,Due,Priority)=>this.getNewUserData(Name,Description,Due,Priority)}/>
       </td>
-      <td>
-          <TodoList/>
+      <td width='40%'valign="top">         
           <Search 
           getText={(dl)=>this.getTextSearch(dl)}    
           editUserStatus={this.state.editUserStatus} 
           changeEditUserStatus={()=>this.changeEditUserStatus()}
           userEditObject={this.state.userEditObject} 
-          getUserEditInfoApp={(info)=>this.getUserEditInfo(info)} />
+          getUserEditInfoApp={(info)=>this.getUserEditInfoApp(info)} />
           <Table 
           DataUserProps={ketqua} 
           editFun={(user)=>this.editUser(user)}         
@@ -125,9 +125,7 @@ class App extends Component {
           deleteUser={(idUser)=>this.deleteUser(idUser)}
           Bulk={this.state.Bulk}
           changeBulkAction={()=>this.changeBulkAction()}/>
-        
-      </td>
-      </tr></tbody></table>
+     </td></tr></tbody></table>
       </>
     );
   }

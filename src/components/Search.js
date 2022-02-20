@@ -18,7 +18,7 @@ class Search extends Component {
     getUserEditInfo=(info)=>{
         this.setState({
             UserObj:info
-        })
+        });
         this.props.getUserEditInfoApp(info);
     }
     isShowEditForm=()=>{
@@ -34,9 +34,11 @@ class Search extends Component {
         return (
             <>
             <div className="col-12">
-            <input  onChange={(event)=>this.isChange(event)} className="form-control" name id aria-describedby="helpId" placeholder="Search..." />
-            </div>
-            {this.isShowEditForm()}
+                <br/>
+                <input  onChange={(event)=>this.isChange(event)} className="form-control" placeholder="Search..." /> 
+            </div>      
+                {this.isShowEditForm()}
+            
              </>
         );
     }
