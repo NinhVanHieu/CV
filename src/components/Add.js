@@ -8,7 +8,8 @@ class Add extends Component {
         Description:"",
         Due:"",
         Priority:"",
-        id:""
+        id:"",
+        age:""
         }
     }
     isChange=(event)=>{
