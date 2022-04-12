@@ -6,7 +6,7 @@ class Head extends Component {
             <div className="col-12 container text-center">
                 <br/>
               <h3><b>New Task hihihi</b></h3>
-              <h2>Lorem</h2>
+              
             </div>       
         );
     }
